@@ -36,7 +36,7 @@ exports.handleRequest = function (req, res) {
       //console.log('OBJECT********',object)
       url = object.url;
       console.log('This is the body*******', url)
-      fs.appendFile(archive.paths.list, url, 'utf8', function(err){
+      fs.appendFile(archive.paths.list, url + '\n', 'utf8', function(err){
       console.log('hope this works', archive.paths.list)
       res.writeHead(302);
       res.end();
