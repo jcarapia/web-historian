@@ -26,12 +26,24 @@ exports.handleRequest = function (req, res) {
   }
 
   if(req.method === 'POST'){
-    req.on('data', function(data){
-      console.log('req.on!!!!!!!!!!!!!!!!!!!!!!!',data.toString())
-    })
-  // var fixturePath = archive.paths.archivedSites + "/" + fixtureName;
+    var body = [];
+    req.on('data', function(chunk){
+      body.push(chunk)
+      });  
+    req.on('end', function(){
+      //console.log('BODY**********', body)
+      object = JSON.parse(body.toString());
+      //console.log('OBJECT********',object)
+      url = object.url;
+      console.log('This is the body*******', url)
+      fs.appendFile(archive.paths.list, url, 'utf8', function(err){
+      console.log('hope this works', archive.paths.list)
+      res.writeHead(302);
+      res.end();
 
-  // var fd = fs.openSync(fixturePath, "w"); 
+    })
+  })
+
 
   }
 };
