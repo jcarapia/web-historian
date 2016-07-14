@@ -46,8 +46,30 @@ exports.addUrlToList = function(url, func){
   })
 };
 
-exports.isUrlArchived = function(){
+exports.isUrlArchived = function(url, func){
+  //var path = (exports.paths.archivedSites + '/' + url)
+  //npconsole.log(path)
+  fs.readFile(exports.paths.archivedSites + '/' + url, function(err, data){
+    if(data === undefined){
+      console.log('This is the falsy data :(', data)
+      func(false);
+    }else {
+      console.log('This is the truthy data :)', data.toString())
+      func(true);
+    }
+
+
+
+  })
+
 };
 
-exports.downloadUrls = function(){
+exports.downloadUrls = function(func){
+    fs.readFile(exports.paths.list, 'utf8', function(err, data){
+    var array = data.split('\n');
+    console.log(array)
+  })
+    // return array
+
+
 };
