@@ -31,7 +31,7 @@ exports.handleRequest = function (req, res) {
       body.push(chunk)
     });  
     req.on('end', function(){
-      object = JSON.parse(body.toString());
+      object = (body.toString());
       url = object.url;
       fs.appendFile(archive.paths.list, url + '\n', 'utf8', function(err){
         res.writeHead(302);

@@ -58,8 +58,7 @@ exports.isUrlArchived = function(url, func){
 };
 
 exports.downloadUrls = function(array){
-    fs.readFile(exports.paths.list, 'utf8', function(err, data){
-    var array = data.split('\n');
-    console.log('This is the array', array);
+  _.each(array, function(url){
+    fs.writeFile(exports.paths.archivedSites + "/" + url, "blah blah");
   })
 };
