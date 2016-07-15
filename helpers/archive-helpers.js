@@ -36,7 +36,6 @@ exports.isUrlInList = function(url , func){
     var array = data.split('\n');
     func(_.contains(array, url))
   })
-
 };
 
 exports.addUrlToList = function(url, func){
@@ -47,29 +46,20 @@ exports.addUrlToList = function(url, func){
 };
 
 exports.isUrlArchived = function(url, func){
-  //var path = (exports.paths.archivedSites + '/' + url)
-  //npconsole.log(path)
   fs.readFile(exports.paths.archivedSites + '/' + url, function(err, data){
     if(data === undefined){
-      console.log('This is the falsy data :(', data)
+      // console.log('This is the falsy data :(', data)
       func(false);
     }else {
-      console.log('This is the truthy data :)', data.toString())
+      // console.log('This is the truthy data :)', data.toString())
       func(true);
     }
-
-
-
   })
-
 };
 
-exports.downloadUrls = function(func){
+exports.downloadUrls = function(array){
     fs.readFile(exports.paths.list, 'utf8', function(err, data){
     var array = data.split('\n');
-    console.log(array)
+    console.log('This is the array', array);
   })
-    // return array
-
-
 };

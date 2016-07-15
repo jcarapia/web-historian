@@ -144,6 +144,7 @@ describe("archive helpers", function(){ // HELPERS START HERE ******************
 
       // Ugly hack to wait for all downloads to finish.
       setTimeout(function () {
+        // console.log('Inside the test file', fs.readdirSync(archive.paths.archivedSites))
         expect(fs.readdirSync(archive.paths.archivedSites)).to.deep.equal(urlArray);
         done();
       }, 25);
